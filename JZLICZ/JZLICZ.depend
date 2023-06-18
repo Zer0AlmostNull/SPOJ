@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1686909637 source:e:\jzlicz\main.cpp
+	<iostream>
+	<map>
+	<cstring>
+

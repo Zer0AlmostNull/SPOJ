@@ -1,27 +1,56 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
+using namespace std;
 
-int main() {
-    int D;
-    std::cin >> D;
-
-    for (int i = 0; i < D; i++) {
-        int N;
-        std::cin >> N;
-
-        std::vector<int> points(N);
-        for (int j = 0; j < N; j++) {
-            std::cin >> points[j];
+int main()
+{
+    int testCases;
+    cin >> testCases;
+    
+    while (testCases--)
+    {
+        int points;
+        cin >> points;
+        
+        vector<int> numbers;
+        int number;
+        int counter = 0;
+        int maximum = 0; // maximum number
+        
+        for (int i = 0; i < points; i++)
+        {
+            cin >> number;
+            numbers.push_back(number);
+            
+            if (number > maximum)
+            {
+                maximum = number;
+            }
         }
-
-        std::sort(points.begin(), points.end(), std::greater<int>());
-
-        for (const auto& point : points) {
-            std::cout << point << " ";
+        
+        sort(numbers.begin(), numbers.end());
+        
+        for (int i = numbers.size() - 1; i >= 0; i--)
+        {
+            if (numbers[i] == maximum)
+            {
+                cout << numbers[i] << " ";
+                counter++; // number of occurrences of the maximum number
+            }
+            else
+            {
+                break;
+            }
         }
-        std::cout << std::endl;
+        
+        for (int i = 0; i < numbers.size() - counter; i++) // subtract the number of occurrences of the maximum number from the size of the vector
+        {
+            cout << numbers[i] << " ";
+        }
+        
+        cout << '\n';
     }
-
+    
     return 0;
 }

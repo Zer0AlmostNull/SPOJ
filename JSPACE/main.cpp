@@ -1,35 +1,33 @@
 #include <iostream>
-#include <string>
 #include <cctype>
+#include <string>
 
 using namespace std;
 
-string modifyText(const string& text) {
-    string modifiedText;
-    bool capitalizeNext = true;
+int main()
+{
+    string inputString;
 
-    for (char c : text) {
-        if (isspace(c)) {
-            capitalizeNext = true;
-        } else {
-            if (capitalizeNext) {
-                modifiedText += toupper(c);
-                capitalizeNext = false;
-            } else {
-                modifiedText += c;
+    while (getline(cin, inputString))
+    {
+        for (unsigned int i = 0; i < inputString.size(); i++)
+        {
+            if (isspace(inputString[i]))
+            {
+                inputString[i] = 0;
+                inputString[i + 1] = toupper(inputString[i + 1]);
             }
         }
-    }
 
-    return modifiedText;
-}
+        for (unsigned int i = 0; i < inputString.size(); i++)
+        {
+            if (inputString[i] != 0)
+            {
+                cout << inputString[i];
+            }
+        }
 
-int main() {
-    string inputText;
-
-    while (getline(cin, inputText)) {
-        string outputText = modifyText(inputText);
-        cout << outputText << endl;
+        cout << "\n";
     }
 
     return 0;
